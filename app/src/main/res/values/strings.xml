@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">lorentz</string>
+    <string name="spi">Spi</string>
+    <string name="lorentz">Lorentz</string>
+    <string name="calculator">Calculator</string>
+    <string name="practice">Practice</string>
+    <string name="result">Result =</string>
+    <string name="lorentz_factor">Lorentz factor(#.###)</string>
+</resources>
