@@ -7,7 +7,6 @@ import androidx.core.content.ContextCompat;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -109,10 +108,8 @@ public class MainActivity extends AppCompatActivity {
         Next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean ToReset = true;
                 String temp = velInput.getText().toString();
                 String temp1;
-                Log.v("MainActivity", temp);
                 if (Next.getText().toString().equals("RESET")) {
                    ResetInput();
                 }
@@ -196,11 +193,10 @@ public class MainActivity extends AppCompatActivity {
     }
     public void CalculateLorentz(){
         LorentzValue=(1/Math.sqrt(1-Math.pow(Velocity.doubleValue()/300000000,2 )));
-        LorentzValue=new Double(Double.valueOf((new DecimalFormat("#.###")).format(LorentzValue)));
-        Log.v("MainActivity",""+LorentzValue);
+        LorentzValue=new Double(Double.valueOf((new DecimalFormat("#.#########")).format(LorentzValue)));
         if(mode.equals("Calculator")){
             Result.setVisibility(View.VISIBLE);
-            Result.setText(" Lorentz factor is "+LorentzValue+" ");
+            Result.setText(" Lorentz "+LorentzValue+" ");
             Next.setText("RESET");
         }
     }
@@ -219,25 +215,25 @@ public class MainActivity extends AppCompatActivity {
     }
     public void CheckLorentz(){
         userInput=new Double(Double.valueOf((new DecimalFormat("#.###")).format(userInput)));
+        LorentzValue=new Double(Double.valueOf((new DecimalFormat("#.###")).format(LorentzValue)));
         Vibrator vibrator=(Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         if(LorentzValue.equals(userInput)){
             resultInput.setTextColor(ContextCompat.getColor(MainActivity.this,R.color.green));
             Result.setVisibility(View.VISIBLE);
-            Result.setText(" Lorentz factor is "+LorentzValue+" ");
+            Result.setText(" Lorentz "+LorentzValue+" ");
             Next.setText("RESET");
             Result.setBackground(AppCompatResources.getDrawable(MainActivity.this,R.drawable.correct));
         }
         else {
             resultInput.setTextColor(ContextCompat.getColor(MainActivity.this,R.color.red));
             Result.setVisibility(View.VISIBLE);
-            Result.setText(" Lorentz factor is "+LorentzValue+" ");
+            Result.setText(" Lorentz "+LorentzValue+" ");
             Next.setText("RESET");
             vibrator.vibrate(1000);
             Result.setBackground(AppCompatResources.getDrawable(MainActivity.this,R.drawable.wrong));
         }
     }
     public void ResetInput() {
-        Log.v("MainActivity", "InRESTMode");
         velInput.getText().clear();
         resultInput.getText().clear();
         velInput.clearFocus();
@@ -264,7 +260,6 @@ public class MainActivity extends AppCompatActivity {
                 int HH=(calendar.get(Calendar.HOUR))%12;
                 int MM=calendar.get(Calendar.MINUTE);
                 int SS=calendar.get(Calendar.SECOND);
-                Log.v("MainActivity",time);
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
