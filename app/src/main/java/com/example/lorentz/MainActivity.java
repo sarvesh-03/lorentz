@@ -131,8 +131,10 @@ public class MainActivity extends AppCompatActivity {
                                 if (userInput < 1)
                                     Toast.makeText(MainActivity.this, "Inavalid Input", Toast.LENGTH_SHORT).show();
                                 else {
-                                    CalculateLorentz();
-                                    CheckLorentz();
+                                    if(Velocity<300000000) {
+                                        CalculateLorentz();
+                                        CheckLorentz();
+                                    }
                                 }
                             }
                         }
@@ -192,13 +194,15 @@ public class MainActivity extends AppCompatActivity {
         Heading.setText("");
     }
     public void CalculateLorentz(){
-        LorentzValue=(1/Math.sqrt(1-Math.pow(Velocity.doubleValue()/300000000,2 )));
-        LorentzValue=new Double(Double.valueOf((new DecimalFormat("#.#########")).format(LorentzValue)));
-        if(mode.equals("Calculator")){
-            Result.setVisibility(View.VISIBLE);
-            Result.setText(" Lorentz "+LorentzValue+" ");
-            Next.setText("RESET");
-        }
+
+            LorentzValue = (1 / Math.sqrt(1 - Math.pow(Velocity.doubleValue() / 300000000, 2)));
+            LorentzValue = new Double(Double.valueOf((new DecimalFormat("#.#########")).format(LorentzValue)));
+            if (mode.equals("Calculator")) {
+                Result.setVisibility(View.VISIBLE);
+                Result.setText(" Lorentz " + LorentzValue + " ");
+                Next.setText("RESET");
+            }
+
     }
     public void DisplaySpi(){
         timeText.setVisibility(View.VISIBLE);
