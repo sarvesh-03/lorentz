@@ -218,8 +218,8 @@ public class MainActivity extends AppCompatActivity {
         timer.cancel();
     }
     public void CheckLorentz(){
-        userInput=new Double(Double.valueOf((new DecimalFormat("#.###")).format(userInput)));
-        LorentzValue=new Double(Double.valueOf((new DecimalFormat("#.###")).format(LorentzValue)));
+        userInput=new Double(Double.valueOf((new DecimalFormat("#.#########")).format(userInput)));
+        LorentzValue=new Double(Double.valueOf((new DecimalFormat("#.#########")).format(LorentzValue)));
         Vibrator vibrator=(Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         if(LorentzValue.equals(userInput)){
             resultInput.setTextColor(ContextCompat.getColor(MainActivity.this,R.color.green));
